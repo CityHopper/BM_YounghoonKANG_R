@@ -185,3 +185,27 @@ attach(st) #변수이름을 직접적으로 쓸때
 Population
 detach(st)
 Population
+
+
+
+
+#csv file 내용 읽기
+setwd ("C:/Users/ICT01_22/Documents/GitHub/BM_ClassMaterial_R")
+air <- read.csv("airquality.csv", header = T)
+
+class(air)
+dim(air)
+str(air)
+head(air)
+tail(air)
+
+name <- c("KANG","PENG","SOO")
+age <- c(40, 32, 10)
+gender <- factor(c("M","N","F"))
+blood.type = factor(c("O","?","A"))
+person.info <- data.frame(name,age,gender,blood.type)
+person.info
+
+setwd ("C:/Users/ICT01_22/Documents/GitHub/BM_ClassMaterial_R")
+air <- write.csv(person.info, "person_info.csv", row.names = F)
+
