@@ -172,7 +172,16 @@ st <- data.frame(state.x77)
 str(st)
 head(st)
 class(st)
+dim(st) #관측치50개/변수 8개
 
 iris.m = as.matrix(iris[ , 1:4])
 head(iris.m)
 class(iris.m)
+str(iris.m)
+
+head(st)
+Population #변수이름
+attach(st) #변수이름을 직접적으로 쓸때
+Population
+detach(st)
+Population
