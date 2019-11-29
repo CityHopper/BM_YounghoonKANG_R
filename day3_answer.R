@@ -1,5 +1,5 @@
 #
-# day3_answer.R
+# day3_answer.R 20191129
 #
 # 3일차 Vertor 실습
 #
