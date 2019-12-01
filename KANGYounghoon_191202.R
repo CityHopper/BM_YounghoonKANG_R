@@ -64,7 +64,7 @@ st13 <- subset(st, Population > 5000); st13
 st14 <- subset(st, Income > 4500); st14[, c("Population","Income","Area")]
 
 #15. 수입이 4,500 이상인 주는 몇 개인지 출력
-st15 <- subset(st, Income > 4500); length(st15)
+st15 <- subset(st, Income > 4500); nrow(st15)
 
 #16. 전체 면적(Area)이 100,000 이상이고, 결빙일수(Frost)가 120 이상인 주의 정보 출력
 st16 <- subset(st, Area > 100000 & Frost > 120); st16
@@ -109,7 +109,7 @@ mt5_2 <- subset(mt5_1, mpg == min(mt5_1[,"mpg"])); rownames(mt5_2)
 mtcars["Honda Civic",c("mpg","gear")]; 
 
 #7. Pontiac Firebird 보다 연비가 좋은 자동차 모델 출력
-mt7 <- subset(mtcars, mpg > mtcars["Pontiac Firebird", "mpg"]); mt7
+mt7 <- subset(mtcars, mpg > mtcars["Pontiac Firebird", "mpg"]); rownames(mt7)
 
 #8. 자동차 모델들의 평균 연비 출력
 mean(mtcars[ ,"mpg"])
@@ -120,35 +120,32 @@ table(mtcars[,"gear"])
 ###문4) R에서 제공하는 airquality 데이터셋은 일별로 대기의 질을 측정한 정보를 담고 있다.
 
 #1. 이 데이터셋의 자료구조 출력
-setwd ("C:/GitHub/BM_ClassMaterial_R")
-air <- read.csv("airquality.csv", header = T)
-class(air)
+class(airquality)
 
 #2. 이 데이터셋의 앞쪽 일부분 내용만 출력
-head(air)
+head(airquality)
 
 #3. 기온(Temp)이 가장 높은 날은 언제인지 월(Month)과 일(Day) 출력
-air3 <- subset(air, Temp == max(air[,"Temp"]))
+air3 <- subset(airquality, Temp == max(airquality[,"Temp"]))
 air3[ ,c("Month","Day")]
 
 #4. 6월달에 발생한 가장 강한 바람(Wind)의 세기 출력
-max(air[,"Wind"])
+max(airquality[,"Wind"])
 
-#5. 7월 달의 평균 기온(Temp) 출력 #7월이 아니라 5월이겠죠?
-mean(air[, "Temp"]) #자료 그대로 5월의 평균기온
-#airjuly <- subset(air, Month == 7); mean(airjuly[,"Temp"] #7월달 기온 데이터도 있다면
+#5. 7월 달의 평균 기온(Temp) 출력 
+airjuly <- subset(airquality, Month == 7); mean(airjuly[,"Temp"])
 
-6. 오존(Ozone) 농도가 100을 넘는 날은 며칠이나 되는지 출력
-nrow(air[air$Ozone > 100,])
+#6. 오존(Ozone) 농도가 100을 넘는 날은 며칠이나 되는지 출력
+air6 <- subset(airquality, Ozone > 100); nrow(air6)
 
 ###문5)
-1. R에서 제공하는 state.x77 데이터셋에서 수입(Income)이 5,000 이상인 주의 데이터에서
-수입(Income), 인구(Population), 면적(Area) 열의 값들만 추출하여 rich_state.csv에 저장
-#매트릭스 자료형은 5000 이상 필터링 안되나
-stat1 <- subset(as.data.frame(state.x77), Income > 5000); stat1
+#1. R에서 제공하는 state.x77 데이터셋에서 수입(Income)이 5,000 이상인 주의 데이터에서 
+# 수입(Income), 인구(Population), 면적(Area) 열의 값들만 추출하여 rich_state.csv에 저장
+#매트릭스 자료형은 5000 이상 필터링 안되나요?
+stat1 <- subset(as.data.frame(state.x77), Income > 5000);
 stat2 <- stat1[, c("Income", "Population","Area")];
 setwd ("C:/GitHub/BM_ClassMaterial_R")
-write.csv(stat2, "rich_state.csv", row.names = T)
+write.csv(stat2, "rich_state.csv", row.names = T) #파일이 이미 존재하면 덮어쓰기 안됨! 왜
 
 #2. 1.에서 만든 rich_state.csv파일을 읽어서 ds 변수에 저장한 후 ds 내용 출력
 setwd ("C:/GitHub/BM_ClassMaterial_R")
