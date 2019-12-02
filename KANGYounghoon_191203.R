@@ -9,12 +9,13 @@
 gender = c('F', 'F', 'F', 'M', 'M', 'F', 'F', 'F', 'M', 'M')
 
 #2. gender에 있는 값들에 대해 도수분포표를 작성하여 출력하시오.
-gd <- table(gender); gd
+table(gender)
 
 #3. gender에 있는 값들에 대해 막대그래프를 작성하여 출력하시오.
-barplot(gd, main = 'Gender')
+barplot(table(gender), main = 'Gender')
+
 #4. gender에 있는 값들에 대해 원그래프를 작성하여 출력하시오.
-pie(gd, main ="Gender")
+pie(table(gender), main ="Gender")
 
 #문2) 좋아하는 계절에 대한 조사 결과가 다음과 같을 때 주어진 문제를 해결하기 위한 R 코드를 작성하시오.
 #여름 겨울 봄 가을 여름 가을 겨울 여름 여름 가을
@@ -23,13 +24,13 @@ pie(gd, main ="Gender")
 season = c('여름', '겨울', '봄', '가을', '여름', '가을', '겨울', '여름', '여름', '가을')
 
 #2. season에 있는 값들에 대해 도수분포표를 작성하여 출력하시오.
-ss <- table(season); ss
+table(season)
 
 #3. season에 있는 값들에 대해 막대그래프를 작성하여 출력하시오.
-barplot(ss, main = "Favorite Season")
+barplot(table(season))
 
 #4. season에 있는 값들에 대해 원그래프를 작성하여 출력하시오.
-pie(ss, main = 'Favorite Season')
+pie(table(season))
 
 #문3)학생 A의 과목별 성적이 다음과 같을 때 각 문제를 해결하기 위한 R 코드를 작성하시오.
 
@@ -50,10 +51,10 @@ mean(score); median(score)
 sd(score)
 
 #5. 가장 성적이 높은 과목의 이름을 출력하시오.
-names(score)[which.max(score)]
+names(which.max(score))
 
 #6. 성적에 대한 상자그림을 작성하고, 이상치에 해당하는 과목이 있으면 출력하시오.
-boxplot(score, main = "Score by Subject")
+boxplot(score)
 boxplot.stats(score)$out #이상치 없음
 
 #7. 다음 조건을 만족하는 위 성적에 대한 히스토그램을 작성하시오.
@@ -65,12 +66,11 @@ hist(score, main = '학생 성적',
 #문4)R에서 제공하는 mtcars 데이터셋에 대해 다음 문제를 해결하기 위한 R코드를 작성하시오.
 
 #1. 중량(wt)의 평균값, 중앙값, 절사평균값(절사범위: 15%), 표준편차를 각각 구하시오.
-mean(mtcars[,"wt"])
-median(mtcars[,"wt"])
-mean(mtcars[,"wt"], trim = 0.15)
+mean(mtcars[,"wt"]); median(mtcars[,"wt"]); 
+mean(mtcars[,"wt"], trim = 0.15); sd(mtcars[, "wt"])
 
 #2. 중량(wt)에 대해 summary( ) 함수의 적용 결과를 출력하시오.
-summary((mtcars[,"wt"]))
+summary(mtcars[,"wt"])
 
 #3. 실린더수(cyl)에 대해 도수분포표를 출력하시오.
 table(mtcars[,"cyl"])
@@ -79,7 +79,6 @@ table(mtcars[,"cyl"])
 barplot(table(mtcars[,"cyl"]))
 
 #5. 중량(wt)의 히스토그램을 출력하시오.
-mtcars[,"wt"]
 hist(mtcars[,"wt"])
 
 #6. 중량(wt)에 대해 상자그림을 출력하시오.(단, 상자그림으로부터 관찰할 수 있는정보를 함께 출력하시오.)
@@ -94,6 +93,7 @@ boxplot.stats(mtcars[,"disp"])
 #각 그룹의 상자그림을 비교하여 관찰할 수 있는 것이 무엇인지 나타내시오.
 boxplot(mpg~gear,
         data = mtcars)
-#3기어 차량은 연비 값의 분포범위가 가장 좁다(표준편차가 적다).
-#4기어 차량은 연비의 중앙값과 최대값이 가장 높다.
-#5기어 차량은 연비 값의 분포범위가 가장 넓다(편차가 크다).
+
+# 3기어 차량은 연비 값의 분포범위가 가장 좁다(표준편차가 적다).
+# 4기어 차량은 연비의 중앙값과 최대값이 가장 높다.
+# 5기어 차량은 연비 값의 분포범위가 가장 넓다(편차가 크다).

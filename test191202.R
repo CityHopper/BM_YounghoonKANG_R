@@ -37,7 +37,7 @@ score
 idx <- which(iris[, 1:4] > 5.0, arr.ind = TRUE)
 idx
 
-#단일변수(일변량) 범주형 자료탐색 #################################################
+#단일변수(일변량) 범주형 자료탐색 ###########################################
 favorite <-c('WINTER','SUMMER',  'SUMMER', 'SPRING'
             , 'SUMMER', 'FALL','FALL', 'SUMMER', 'SPRING', 'SPRING')
 
@@ -47,7 +47,9 @@ table(favorite)
 table(favorite) / length(favorite)
 ds <- table(favorite)
 ds
+par(mar=c(1,1,1,1))
 barplot(ds, main = 'favorite season')
+barplot(ds)
 
 ds.new <- ds[c(2,3,1,4)] #봄여름가을겨울 순서로 바꿈
 ds.new
@@ -65,7 +67,7 @@ names(ds) <- colors; ds
 barplot(ds, main = 'favorite season', col = colors) # col = 색상 입력 인수 
 pie(ds, main = 'favorite season', col = colors)
 
-# 단일변수(일변량) 연속형 자료 탐색 ################################################
+# 단일변수(일변량) 연속형 자료 탐색 #####################################
 weight <- c(60,62,64,65,76, 69)
 weight.heavy <- c(weight, 120); weight.heavy
 #평균
@@ -74,11 +76,11 @@ mean(weight); mean(weight.heavy)
 median(weight); median(weight.heavy)
 #절사평균: 상위 일부와 하위 일부 제거 (예시에선 20%)
 mean(weight, trim = 0.2); mean(weight.heavy, trim = 0.2)
-#사분위수: 이사분위(25%)값이 중앙값과 같다. 일사분위부터 삼사분위까지 대략 50%.
-quantile(weight.heavy) #0가 최소값, 100%가 최대값
-quantile(weight.heavy, (0:10)/10)
+#사분위수: 이사분위(50%)값이 중앙값과 같다. 일사분위(25%)부터 삼사분위(75%)까지 대략 50%.
+quantile(weight.heavy) #0%가 최소값, 100%가 최대값
+quantile(weight.heavy, (0:10)/5)
 summary(weight.heavy) #이사분위=중앙값=median
-
+quantile(weight.heavy, probs=c(0.05, 0.1, 0.9, 0.95))
 #산포 distribution
 #분산 Variance
 var(weight); var(weight.heavy)
@@ -105,12 +107,12 @@ hist (dist, main = "Histogram for 제동거리",
 #상자그림은 하나의 그래프로 데이터의 분포형태를포함한 다양한 정보를 전달
 #자료의 전반적인 분포를 이해하는데 도움
 #구체적인 최소/최대/중앙값을 알기는 어렵다
-boxplot(dist, main ="자동차 제동거리")
-boxplot.stats(dist)
-boxplot.stats(dist)$stats #정상범위 사분위수
-boxplot.stats(dist)$n     #관측치 개수
-boxplot.stats(dist)$conf  #중앙값 신뢰구간
-boxplot.stats(dist)$out   #이상치(특이값) 목록
+boxplot(cars[, 2], main ="자동차 제동거리")
+boxplot.stats(cars[, 2])
+boxplot.stats(cars[, 2])$stats #정상범위 사분위수
+boxplot.stats(cars[, 2])$n     #관측치 개수
+boxplot.stats(cars[, 2])$conf  #중앙값 신뢰구간
+boxplot.stats(cars[, 2])$out   #이상치(특이값) 목록
 
 #일변량 중 그룹으로 구성된 자료의 상자그림
 boxplot(Petal.Length~Species, #기준은 길이, 종별로 보겠다.
