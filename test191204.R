@@ -340,3 +340,7 @@ df <- data.frame(id = c(1,2,4),
 table(df$gender)
 freq(df$gender) #막대그래프 자동 출력
 freq(df$gender, plot = F) #막대그래프 미출력
+
+
+
+
