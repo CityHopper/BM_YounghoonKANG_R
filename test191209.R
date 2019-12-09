@@ -2,7 +2,7 @@
 # https://www.tidyverse.org/packages/
 # https://ggplot2.tidyverse.org
 library(tidyverse)
-
+mpg
 dim(mpg)
 str(mpg)
 head(mpg)
@@ -127,7 +127,7 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 # treemap
 install.packages('treemap')
 library(treemap)
-
+GNI2014
 data(GNI2014)
 dim(GNI2014)
 str(GNI2014)
