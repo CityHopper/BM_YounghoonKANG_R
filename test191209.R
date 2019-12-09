@@ -1,7 +1,6 @@
 # day 10
 # https://www.tidyverse.org/packages/
 # https://ggplot2.tidyverse.org
-install.packages("tidyverse")
 library(tidyverse)
 
 dim(mpg)
@@ -18,7 +17,7 @@ df
 
 # 세로 막대차트
 ggplot(df, aes(x = month, y=rain)) + # aes 함수는 ggplot에 써도, geom_bar에 써도 상관 없음
-  geom_bar(stat = "identity",
+  geom_bar(stat = "identity", #데이터셋 안에 포함되지 않은 변수를 쓸때는 stat = “bin” 입력
            width = 0.7,
            fill = "steelblue")
 
@@ -38,10 +37,10 @@ ggplot(df, aes(x = month, y = rain)) +
 ggplot(iris, aes(x = Petal.Length)) +
   geom_histogram(binwidth = 1.0)
 
-ggplot(iris, aes(x = Sepal.Width, fill = Species, 
-                 color = Species)) + # fill은 막대 채우는 색, color는 경계선
-  geom_histogram(binwidth = 0.1, position = "dodge") + # dodge : 막대를 이어 붙이기 
-  theme(legend.position = 'bottom') # 범례
+ggplot(iris, aes(x = Sepal.Width, fill = Species, # fill은 막대를 채우는 색
+                 color = Species)) + #color는 경계선의 색
+  geom_histogram(binwidth = 0.1, position = "dodge") + # dodge : 막대 이어 붙이기 
+  theme(legend.position = 'bottom') # legend.position :범례 위치
 
 ##ggplot2 Scatter chart
 ggplot ( data = iris, mapping = aes (x = Petal.Length,
