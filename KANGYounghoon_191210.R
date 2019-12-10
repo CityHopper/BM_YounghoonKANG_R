@@ -6,8 +6,8 @@
 install.packages("tidyverse")
 library(tidyverse)
 
-ggplot(mtcars, aes(x = gears)) +
-  geom_bar(width = 0.7,
+ggplot(mtcars, aes(x = gear)) +
+  geom_bar( width = 0.7,
            fill = 'blue') +
   ggtitle("기어의 수") +
   labs(x = '기어의 수', y = '빈도수')
@@ -35,7 +35,7 @@ ggplot(trees, aes(x=Girth))+
 # y축으로 하는 산점도를 ggplot으로 작성하시오. (단, 점의 색은 gear의
 # 수에 따라 다르게 표시한다.)
 ggplot(mtcars, aes(x = mpg, y=wt))+
-  geom_point(aes(fill = gear))
+  geom_point(aes(color = gear))
 
 # 문6)R에서 제공하는 mtcars 데이터셋에서 mpg(연비)에 대해 ggplot으로 상자그림을 
 # 작성하되, cyl(실린더 수)에 따라 그룹을 나누어 작성하시오.
@@ -43,6 +43,7 @@ ggplot(mtcars, aes(x = cyl, y = mpg,
                    fill = as.factor(mtcars$cyl))) +
   geom_boxplot()
 
+scale_fill_manual() # 색상 일일이 지정
 
 # 문7) 다음은 2015년부터 2026년도까지의 예상 인구수 추계 자료이다. 연도를
 # x축으로 하여 ggplot으로 선그래프를 작성하시오.
@@ -75,7 +76,7 @@ library(treemap)
 us$states<-rownames(us)
 head(us)
 treemap(us,
-        index = c('states', 'state.division'),
+        index = c('state.division', 'states'),
         vSize = 'Population',
         vColor= 'Income',
         type = 'value')
@@ -87,7 +88,7 @@ treemap(us,
 # 내고, 각각의 타일에는 주의 이름을 표시하시오. 마지막으로 이 트리맵에서 관찰할
 # 수 있는 것이 무엇인지 설명하시오.
 treemap(us,
-        index = c('states', 'state.division'),
+        index = c('state.division', 'states' ),
         vSize = 'HS.Grad',
         vColor= 'Murder',
         type='value')
