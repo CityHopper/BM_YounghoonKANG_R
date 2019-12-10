@@ -1,6 +1,7 @@
 # day 10
 # https://www.tidyverse.org/packages/
-# https://ggplot2.tidyverse.org
+# 
+
 library(tidyverse)
 mpg
 dim(mpg)
@@ -200,3 +201,5 @@ p <- data %>%
 # turn ggplot interactive with plotly
 pp <- ggplotly(p, tooltip="text")
 pp
+
+
