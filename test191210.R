@@ -117,6 +117,7 @@ map <- get_googlemap(center = cen, # 지도 중심점 좌표
                      marker = gc) 
 ggmap(map)
 
+# 제주 관광지를 지도 위에 표시
 names <- c("용두암", '성산일출봉', '정방폭포', '중문관광단지','한라산 1100고지', '차귀도')
 addr <- c('제주시 용두암길 15', 
           '서귀포 성산읍 성산리',
@@ -126,14 +127,6 @@ addr <- c('제주시 용두암길 15',
           '제주시 한경면 고산리 125')
 gc <- geocode(enc2utf8(addr))
 gc
-
-cen <- as.numeric(gc)
-map <- get_googlemap(center = cen, # 지도 중심점 좌표
-                     zoom = 10,
-                     maptype = 'roadmap',
-                     marker = gc) 
-ggmap(map)
-
 
 # 관광지 명칭과 좌표값으로 DataFrame 생성
 df <- data.frame(name = names, lon = gc$lon,
@@ -183,34 +176,50 @@ gmap +
   geom_point(data = df,
              aes(x = lon, y = lat, size = spd),
              alpha = 0.5, color = 'navy') +
-  scale_size_continuous(range=c(1,14)) #원 크기 조절
+  scale_size_continuous(range=c(1,14)) #원 크기 조절. 안될 때 이거 빼라
 
 # 단계 구분도
-install.packages("ggiraphExtra")
+install.packages("ggiraphExtra") # 단계 구분도를 위한 패키지
 library(ggiraphExtra)
+
+# 미국 주별 데이터셋
 dim(USArrests)
 str(USArrests)
 head(USArrests)
 
 library(tibble)
+
+# USArrests 데이터셋에 지역명 변수가 따로 없고 행이름이 지역명으로 되어 있음
+# tibble package의 rownames_to_column()을 이용해서 행 이름을 state 변수로 바꿔서 dataframe 생성
+
 crime <- rownames_to_column(USArrests, var = 'state')
 crime$state <- tolower(crime$state)
 str(crime)
 head(crime)
 
 library(ggplot2)
+
+# 단계 구분도를 만드려면 지역의 위도, 경도 정보가 있는 지도 데이터 필요.
+# R에 내장된 map 패키지에 미국 주별 위/경도를 나타내는 state가 있음
+
 install.packages('mapproj')
 library(mapproj)
 
-state_map <- map_data('state')
+state_map <- map_data('state') # ggplot2의 map_data()를 이용 데이터 프레임 생성
 state_map
 str (state_map)
+
+# ggiraphExtra package에 포함된 단계 구분도 작성 함수
 ggChoropleth(data = crime,
              aes(fill = Murder,
                  map_id = state),
              map = state_map)
 
-
+ggChropleth(data = crime,
+            aes(fill = Murder,
+                map_id = state),
+            map = state_map,
+            interactive = T) #interactive = T로 하면 지도 위에 마우스 움직임에 반응하는 interactive 단계구분도 작성
 
 # http://rpubs.com/cardiomoon/222145 # 국내 지도 사용하기
 # 윈도우 사용자가 지도 데이타를 사용하고자 할때에는 changeCode()함수로 한글코드를 바꾸어 사용하시기 바랍니다. 단 interactive plot을 사용할 때에는 변환하시지 말고 사용하셔야 합니다.
