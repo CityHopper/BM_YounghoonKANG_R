@@ -141,7 +141,8 @@ df
 cen <- c(mean(df$lon), mean(df$lat))
 map <- get_googlemap(center = cen,
                      maptype = 'roadmap',
-                     zoom = 8)
+                     zoom = 8,
+                     markers = gc)
 gmap <- ggmap(map)
 gmap +
     geom_text(data = df,

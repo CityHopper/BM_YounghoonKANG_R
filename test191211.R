@@ -76,7 +76,7 @@ wordcloud (names(wordcount), # 단어
 # 6. 전처리 과정 수행
 #   6.1 생략된 단어를 사전에 등재
 buildDictionary(ext_dic = 'woorimalsam',
-                user_dic = data.frame('정치', 'ncn'),
+                user_dic = data.frame('정치', 'ncn'), # 사전에 없는 정치라는 단어를 명사(ncn)로 추가 
                 replace_usr_dic = T)
 noun <- sapply(text, extractionNoun, USE.NAMES = F)
 noun2 <- unlist(noun)
