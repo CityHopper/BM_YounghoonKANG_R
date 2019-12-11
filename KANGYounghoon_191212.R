@@ -33,20 +33,6 @@ barplot (sort.noun, names.arg = names(sort.noun),
          ylab = '단어 빈도수')
 
 df <- as.data.frame(sort.noun)
-df
-ggplot ( df, aes(x = df$noun11, y = df$Freq)) +
-    geom_bar(stat = 'identity',
-             width = 0.7,
-             fill = 'steelblue') +
-    ggtitle('빈도수 높은 단어') +
-    theme(plot.title = element_text(size = 25,
-                                    face = 'bold',
-                                    colour = 'steelblue',
-                                    hjust = 0,
-                                    vjust = 1 )) +
-    labs(x = '명사', y='단어빈도수') +
-    geom_text(aes(label = df$Freq), hjust = -0.3) + # 빈도 표시
-    coord_flip()
 
 wordcloud (names(wordcount), # 단어
            freq = wordcount, # 단어 빈도
@@ -68,20 +54,6 @@ barplot (sort.noun, names.arg = names(sort.noun),
          ylab = '단어 빈도수')
 
 df <- as.data.frame(sort.noun)
-df
-ggplot ( df, aes(x = df$noun22, y = df$Freq)) +
-    geom_bar(stat = 'identity',
-             width = 0.7,
-             fill = 'steelblue') +
-    ggtitle('빈도수 높은 단어') +
-    theme(plot.title = element_text(size = 25,
-                                    face = 'bold',
-                                    colour = 'steelblue',
-                                    hjust = 0,
-                                    vjust = 1 )) +
-    labs(x = '명사', y='단어빈도수') +
-    geom_text(aes(label = df$Freq), hjust = -0.3) + # 빈도 표시
-    coord_flip()
 
 wordcloud (names(wordcount), # 단어
            freq = wordcount, # 단어 빈도
@@ -103,20 +75,6 @@ barplot (sort.noun, names.arg = names(sort.noun),
          ylab = '단어 빈도수')
 
 df <- as.data.frame(sort.noun)
-df
-ggplot ( df, aes(x = df$noun33, y = df$Freq)) +
-    geom_bar(stat = 'identity',
-             width = 0.7,
-             fill = 'steelblue') +
-    ggtitle('빈도수 높은 단어') +
-    theme(plot.title = element_text(size = 25,
-                                    face = 'bold',
-                                    colour = 'steelblue',
-                                    hjust = 0,
-                                    vjust = 1 )) +
-    labs(x = '명사', y='단어빈도수') +
-    geom_text(aes(label = df$Freq), hjust = -0.3) + # 빈도 표시
-    coord_flip()
 
 wordcloud (names(wordcount), # 단어
            freq = wordcount, # 단어 빈도
@@ -148,20 +106,6 @@ barplot (sort.noun, names.arg = names(sort.noun),
          ylab = '단어 빈도수')
 
 df <- as.data.frame(sort.noun)
-df
-ggplot ( df, aes(x = df$noun4, y = df$Freq)) +
-    geom_bar(stat = 'identity',
-             width = 0.7,
-             fill = 'steelblue') +
-    ggtitle('빈도수 높은 단어') +
-    theme(plot.title = element_text(size = 25,
-                                    face = 'bold',
-                                    colour = 'steelblue',
-                                    hjust = 0,
-                                    vjust = 1 )) +
-    labs(x = '명사', y='단어빈도수') +
-    geom_text(aes(label = df$Freq), hjust = -0.3) + # 빈도 표시
-    coord_flip()
 
 wordcloud (names(wordcount), # 단어
            freq = wordcount, # 단어 빈도
@@ -191,20 +135,6 @@ barplot (sort.noun, names.arg = names(sort.noun),
          ylab = '단어 빈도수')
 
 df <- as.data.frame(sort.noun)
-df
-ggplot ( df, aes(x = df$noun5, y = df$Freq)) +
-    geom_bar(stat = 'identity',
-             width = 0.7,
-             fill = 'steelblue') +
-    ggtitle('빈도수 높은 단어') +
-    theme(plot.title = element_text(size = 25,
-                                    face = 'bold',
-                                    colour = 'steelblue',
-                                    hjust = 0,
-                                    vjust = 1 )) +
-    labs(x = '명사', y='단어빈도수') +
-    geom_text(aes(label = df$Freq), hjust = -0.3) + # 빈도 표시
-    coord_flip()
 
 wordcloud (names(wordcount), # 단어
            freq = wordcount, # 단어 빈도
