@@ -60,6 +60,7 @@ coef(model) # 매개변수(계수) - w, b값 출력
 cars
 
 fitted(model) # 훈련 데이터에 있는 샘플에 대한 예측값 | 회귀식의 y값
+fitted.values(model)
 residuals(model) # 잔차: 회귀식으로 추정된 값과의 차이(오차) | 다 제곱해서 더하면 deviance
 # 잔차 제곱합을 평균제곱오차(MES-mean squared error)로 변환
 deviance(model) / length(cars$speed)
