@@ -51,17 +51,19 @@ ggmap(map) +
 
 # 제주도 읍면동별 외국인 인구수 treemap
 library(treemap)
-cjutown2 <- cjutownfor
+cjutown2 <- cjutown[-c(1,2,29),-1]; cjutown2
+foreignrate <- cjutown2$외국인/cjutown2$제주.인구
+cjutown3 <- cbind(cjutown2, foreignrate); cjutown3
 
 
 st <- data.frame(state.x77)
 st <- data.frame(st, stname = rownames(st))
 st
-treemap(cjutownfor, index = c("행정시별.2."),
-        vSize = "Area",
-        vColor = 'Income',
+treemap(cjutown3, index = c("행정시별.2."),
+        vSize = "외국인",
+        vColor = 'foreignrate',
         type = 'value',
-        title = '미국 주별 수입')
+        title = '제주도 외국인 읍면동별 외국인 인구 및 비율')
 
 
 
