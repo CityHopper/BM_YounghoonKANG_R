@@ -1,4 +1,16 @@
 
+# 전국-제주 체류자격별 등록 외국인
+
+
+
+
+
+
+
+
+
+
+
 # 제주도 시별 외국인 인구수 ggmap
 library(ggmap)
 register_google(key = 'AIzaSyCs0wxvwUGyb7GgWNhlNB4NdfnWh78c5Tg')
