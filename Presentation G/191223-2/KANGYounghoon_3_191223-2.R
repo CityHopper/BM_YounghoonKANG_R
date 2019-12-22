@@ -1,14 +1,57 @@
+library(rJava)
+library(xlsx)
+Sys.setlocale("LC_ALL","korean") 
+# 외국인 이민자 일자리 찾는 데 어려움 설문 조사 결과
+setwd("C:/GitHub/BM_YounghoonKANG_R/Presentation G/191223-2")
+forejobprob <- read.xlsx("실업자가_구직_시_경험한_어려움의_원인_복수응답__이민자(외국인only)__20191221183406.xlsx", sheetIndex=1, encoding="UTF-8")
+
+View(forejobprob)
+
+library(ggplot2)
+ggplot(forejobprob, aes(x = reorder(항목, 외국인), y = 외국인)) +
+  geom_bar(stat = "identity",
+           width = 0.7,
+           fill = "gray") +
+  ggtitle ("실업자가 구직 시 경험한 어려움의 원인") + # 차트 제목
+  theme(plot.title = element_text(size = 25,
+                                  face = "bold",
+                                  color = 'black')) +
+  labs(subtitle = "(복수응답, 외국인 이민자, 2019)") + 
+  coord_flip() #가로-세로 flip
+
+# 실업자의 구직경로(복수응답, 외국인이민자)
+Sys.setlocale("LC_ALL","korean") 
+setwd("C:/GitHub/BM_YounghoonKANG_R/Presentation G/191223-2")
+foreunemp <- read.xlsx("실업자의 구직경로(복수응답, 외국인이민자).xlsx", sheetIndex=1, encoding="UTF-8")
+foreunemp[1:6,]
+
+ggplot(foreunemp[1:6,], aes(x = reorder(항목, 응답결과), y = 응답결과)) +
+  geom_bar(stat = "identity",
+           width = 0.7,
+           fill = "gray") +
+  ggtitle ("실업자의 구직 경로") + # 차트 제목
+  theme(plot.title = element_text(size = 25,
+                                  face = "bold",
+                                  color = 'black')) +
+  labs(subtitle = "(복수응답, 외국인 이민자, 2019)") + 
+  coord_flip() #가로-세로 flip
+
+# 외국인 고용 지원 센터 현황
+library(ggmap)
+register_google(key = 'AIzaSyCs0wxvwUGyb7GgWNhlNB4NdfnWh78c5Tg')
+names <- c("제주시 우리은행")
+gc <- geocode(enc2utf8(names))
+df <- data.frame(name = names, lon = gc$lon, lat = gc$lat)
+df
+cen <- c(mean(df$lon), mean(df$lat))
+map <- get_googlemap(center = cen,
+                     maptype = 'roadmap',
+                     size=c(640,640),
+                     marker = gc)
+ggmap(map)
+dev.off()
 
 # 전국-제주 체류자격별 등록 외국인
-
-
-
-
-
-
-
-
-
 
 
 # 제주도 시별 외국인 인구수 ggmap
