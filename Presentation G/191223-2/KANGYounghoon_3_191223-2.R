@@ -1,3 +1,40 @@
+
+# 계절근로자제 농어가 고용주 애로사항
+p <- c('의사소통 어려움', '월급 부담', '일을 못함')
+n <- c(44.2, 33.0, 22.8)
+
+names(n) <-p
+label <- paste(names(n), "\n", n/sum(n)*100, "%")
+label
+pie(n, labels = label)
+
+# 계절근로자제 농어가 고용주 건의사항
+p <- c('배정인원 확대', '고용기간 연장', '숙박비 유상화')
+n <- c(11.2, 71.3, 17.5)
+
+names(n) <-p
+label <- paste(names(n), "\n", n/sum(n)*100, "%")
+label
+pie(n, labels = label)
+
+
+# 계절근로자제 입국자
+library(ggplot2)
+year <- c(2015, 2016, 2017, 2018)
+season<- c(19,200,1086,2822)
+seasoninb <- data.frame(year, season)
+seasoninb
+ggplot(seasoninb, aes(year, season))+
+  geom_line(color="red")
+
+# 계절근로자제 이탈자
+year <- c(2015, 2016, 2017, 2018)
+nout <- c(0,4,18,93)
+outyear <- data.frame(year, nout)
+ggplot(outyear, aes(year, nout))+
+  geom_line(color="red")
+
+
 library(rJava)
 library(xlsx)
 Sys.setlocale("LC_ALL","korean") 
