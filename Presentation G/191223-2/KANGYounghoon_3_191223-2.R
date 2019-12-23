@@ -25,14 +25,14 @@ season<- c(19,200,1086,2822)
 seasoninb <- data.frame(year, season)
 seasoninb
 ggplot(seasoninb, aes(year, season))+
-  geom_line(color="red")
+  geom_line(color="#F14B69", size =2)
 
 # 계절근로자제 이탈자
 year <- c(2015, 2016, 2017, 2018)
 nout <- c(0,4,18,93)
 outyear <- data.frame(year, nout)
 ggplot(outyear, aes(year, nout))+
-  geom_line(color="red")
+  geom_line(color="#F14B69", size = 2)
 
 
 library(rJava)
