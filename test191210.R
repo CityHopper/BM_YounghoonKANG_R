@@ -76,7 +76,7 @@ scatter3d(x = df.tsne$X1, y = df.tsne$X2, z = df.tsne$X3,
 # 3. ggmap 패키지 설치
 # 4. 구글맵을 사용하기 위한 API key 획득
 # 5. 구글맵을 이용한 공간 시각화 수행
-# My Google maps AIP Key: AIzaSyCs0wxvwUGyb7GgWNhlNB4NdfnWh78c5Tg
+
 library(ggmap)
 help(get_googlemap)
 register_google(key = '')
