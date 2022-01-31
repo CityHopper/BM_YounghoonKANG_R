@@ -79,7 +79,7 @@ scatter3d(x = df.tsne$X1, y = df.tsne$X2, z = df.tsne$X3,
 # My Google maps AIP Key: AIzaSyCs0wxvwUGyb7GgWNhlNB4NdfnWh78c5Tg
 library(ggmap)
 help(get_googlemap)
-register_google(key = 'AIzaSyCs0wxvwUGyb7GgWNhlNB4NdfnWh78c5Tg')
+register_google(key = '')
 gc <- geocode(enc2utf8("모투에카")) # '제주'의 위도와 경도 획득
 gc
 cen <- as.numeric(gc) # 경도/위도를 숫자로 변환
